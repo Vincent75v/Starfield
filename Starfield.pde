@@ -1,27 +1,37 @@
 Particle[] Star = new Particle[1500];  
+OddballParticle[] sun = new OddballParticle[1];
 void setup()
 {
-  
+  frameRate(144);
   background(0);
   size(550, 550);
   for (int i=0; i<Star.length; i++)
   {
-  Star[i] = new Particle();
-  Star[1499] = new OddballParticle();
+  Star[i] = new Particle(); 
   }
 
- 
+  for (int i =0; i<sun.length; i++)
+  {
+    sun[i] = new OddballParticle();
+  }
 }
 void draw()
 {
-  
+  background(1);
   for (int i=0; i<Star.length; i++)
   {
   Star[i].move();
   Star[i].show();
   }
-  
+  for(int i =0; i<sun.length; i++)
+  {
+    
+    sun[i].move();
+    sun[i].show();
+    
+  }
 }
+
 class Particle
 {
   double X, Y, Speed, Angle, Size;
@@ -61,18 +71,19 @@ class Particle
     }
     void move()
     {
-       
+      
       X += Math.random()*5-2.5;
       Y += Math.random()*5-2.5;
+      
     }
     void show()
     {
-     
+      
 
       fill(paint);
      
-      ellipse((float)X, (float)Y, (float)Size*3, (float)Size*2);
-       
+      ellipse((float)X, (float)Y, (float)Size*10, (float)Size*10);
+      
     }
   }
 
